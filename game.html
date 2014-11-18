@@ -1,0 +1,27 @@
+<div id="gameScreen">
+    <div class="matchScoreArea" on-long-press="promptEndingMatch()">
+        <span>{{match.players[0].name}}</span>
+        <span>{{match.score[0]}}</span>
+        <span>:</span>
+        <span>{{match.score[1]}}</span>
+        <span>{{match.players[1].name}}</span>
+    </div>
+    <div class="gameTitleArea">
+        <span class="gameNo">Game # {{game.gameNo}}</span>
+        <span id="gameTimer" class="timer" ng-click="togglePause()"></span>
+    </div>
+    <div ng-class="getActivePlayerScoreClass()">
+        <span class="playerName">{{getActivePlayer().name}}</span>
+        <span class="playerScore">{{getActivePlayerPoints()}}</span>
+        <span class="madeBtn" ng-click="made()">Made</span>
+        <span class="missedBtn" ng-click="missed()">Missed</span>
+    </div>
+    <div ng-class="getInactivePlayerScoreClass()">
+        <span class="playerName">{{getInactivePlayer().name}}</span>
+        <span class="playerScore">{{getInactivePlayerPoints()}}</span>
+    </div>
+    <div>
+        <span class="targetBtn" ng-show="isTargetAvailable()" ng-click="target()">Target</span>
+        <span class="undoBtn" ng-show="game.commands.length > 0" ng-click="undo()">Undo</span>
+    </div>
+</div>
